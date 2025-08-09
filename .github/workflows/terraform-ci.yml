@@ -48,7 +48,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::575960430633:role/GitHubActionsDeployRole
-          aws-region: ${{ env.AWS_REGION }}
+          aws-region: ${{ env.AWS_REGION || 'us-east-1' }}
 
       - name: Show config
         run: |
