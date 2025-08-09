@@ -1,10 +1,11 @@
 name: Terraform CI
 
 on:
+  workflow_dispatch:
   pull_request:
     branches: [ main ]
   push:
-    branches: [ main ]
+    branches: [ "**" ]
 
 permissions:
   id-token: write
@@ -25,7 +26,6 @@ env:
   TF_STATE_BUCKET: aws-basics-labs-tf-state # change as needed
   TF_STATE_KEY: aws-basics-labs/dev/terraform.tfstate # change as needed
   TF_STATE_LOCK_TABLE: aws-basics-labs-tf-locks # change as needed
-  TF_VAR_aws_region: ${{ env.AWS_REGION }}
 
 jobs:
   terraform:
@@ -70,7 +70,7 @@ jobs:
         run: terraform validate
 
       - name: Terraform Plan
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
         run: terraform plan -out=tfplan
 
       - name: Terraform Apply
