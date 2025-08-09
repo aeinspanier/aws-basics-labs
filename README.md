@@ -58,3 +58,14 @@ aws-basics-labs/
 ### Notes
 - The Lambda writes a JSON file to S3 and a row to DynamoDB on each invocation.
 - Bucket names must be globally unique; a short random suffix is added automatically.
+
+For the future, we should add suppport for:
+
+Include:
+	•	VPC + Networking
+	•	IAM roles and policies
+	•	S3 + DynamoDB + RDS
+	•	EC2 + Lambda (and related IAM for these)
+	•	Messaging: SQS + SNS + EventBridge
+	•	Monitoring: CloudWatch, CloudTrail, Config
+
